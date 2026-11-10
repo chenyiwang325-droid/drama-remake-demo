@@ -7772,13 +7772,13 @@ document.addEventListener("DOMContentLoaded", function () {
     frame.className = 'sb-preview-frame sb-preview-frame--' + status;
     if (poster) {
       frame.setAttribute('data-poster', poster);
-      frame.style.setProperty('--sb-poster', "url('" + poster + "')");
+      frame.style.setProperty('--sb-poster', "url(" + JSON.stringify(new URL(poster, document.baseURI).href) + ")");
     }
     var inner =
-      '<span class="sb-preview-corner">示例画面</span>' +
+      '<span class="sb-preview-corner">静态参考帧</span>' +
       '<span class="sb-preview-demo">DEMO</span>';
     if (status === 'ready') {
-      inner += '<span class="sb-preview-play"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>';
+      inner += '<button type="button" class="sb-preview-play" aria-label="放大本镜参考帧"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9V3h6m6 0h6v6m0 6v6h-6M9 21H3v-6"/></svg></button>';
     } else if (status === 'generating') {
       inner += '<div class="sb-preview-scan"></div><span class="sb-preview-genlabel">正在生成中…</span>';
       var genEp = shotSection.getAttribute('data-ep') || '1';
@@ -7798,26 +7798,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 点击海报 → 全屏 lightbox（用图片模拟播放）
   function _openDemoLightbox(poster) {
-    var ov = document.createElement('div');
-    ov.className = 'sb-demo-lightbox';
-    ov.innerHTML =
-      '<div class="sb-demo-lightbox-inner">' +
-        '<img src="' + poster + '" alt="示例画面" />' +
-        '<span class="sb-demo-lightbox-tag">示例画面 · 静态参考帧（DEMO 无实际视频流）</span>' +
-        '<button class="sb-demo-lightbox-close" aria-label="关闭">✕</button>' +
-      '</div>';
-    document.body.appendChild(ov);
-    // 唯一的关闭逻辑（✕ / 点击外围 / ESC 三种方式都走这里）
-    var close = function () {
-      ov.remove();
-      document.removeEventListener('keydown', esc);
-      if (document.body.style.overflow === 'hidden') document.body.style.overflow = '';
-    };
-    var esc = function (ev) { if (ev.key === 'Escape') { ev.stopPropagation(); close(); } };
-    ov.addEventListener('click', function (e) {
-      if (e.target === ov || e.target.closest('.sb-demo-lightbox-close')) close();
-    });
-    document.addEventListener('keydown', esc);
+    var ov = document.createElement('dialog');
+    ov.className = 'reference-dialog';
+    ov.setAttribute('aria-label', '本镜参考帧');
+    var img = document.createElement('img');
+    img.src = poster; img.alt = '当前镜头的静态参考帧';
+    var label = document.createElement('p'); label.textContent = '静态参考帧';
+    var button = document.createElement('button'); button.type = 'button';
+    button.setAttribute('aria-label','关闭参考帧'); button.textContent = '关闭';
+    ov.append(img,label,button); document.body.appendChild(ov);
+    button.addEventListener('click', function(){ ov.close(); });
+    ov.addEventListener('click',function(e){ if(e.target === ov) ov.close(); });
+    ov.addEventListener('close',function(){ov.remove();},{once:true});
+    ov.addEventListener('keydown', function(e){if(e.key==='Escape'){e.preventDefault();e.stopPropagation();ov.close();}});
+    ov.showModal();
   }
 
   function _bindPreviewFrameClick() {
@@ -11545,7 +11539,7 @@ function openProject(pid) {
   var p = PROJECT_LIST.find(function (x) { return x.id === pid; });
   if (p && window.PAGE_DATA) window.PAGE_DATA.pid = pid;
   var info = document.getElementById('topnav-project-info');
-  if (info && p) info.textContent = p.name;
+  if (info && p) info.textContent = ' · ' + p.name;
   sw('p');
 }
 
@@ -11578,7 +11572,8 @@ function editProject(pid) { window.alert('编辑工作台（自定义封面等�
 function projectMembers(pid) { window.alert('成员管理 — Demo 占位'); }
 function moveToTrash(pid) {
   if (window.confirm('确认将此项目移动至回收站？')) {
-    PROJECT_LIST = PROJECT_LIST.filter(function (x) { return x.id !== pid; });
+    var index = PROJECT_LIST.findIndex(function (x) { return x.id === pid; });
+    if (index >= 0) PROJECT_LIST.splice(index, 1);
     renderProjectList();
   }
 }
@@ -11596,6 +11591,10 @@ const PROJECT_LIST = [
   { id:'ad_test', name:'广告测试画布', episodes:1, target:'欧美 / en-US', progress:5, directions:['欧美'], cover:'images/hotel_room_morning_sun_v0002.png', updated:'2026-05-15', color:'#65FFAA' },
 ];
 
+function escapeProjectText(value) {
+  return String(value).replace(/[&<>"']/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;', '"':'&quot;',"'":'&#39;'}[c];});
+}
+
 function renderProjectList() {
   var grid = document.getElementById('plist-grid');
   if (!grid) return;
@@ -11605,14 +11604,14 @@ function renderProjectList() {
     return '<article class="space-card" data-item-id="' + p.id + '">' +
       '<button class="space-card-action space-card-select" type="button" title="选择"><svg class="svg-icon"><use xlink:href="#icon-space-select-normal"/></svg></button>' +
       '<button class="space-card-action space-card-favorite" type="button" title="收藏"><svg class="svg-icon"><use xlink:href="#icon-space-collect-normal"/></svg></button>' +
-      '<div class="space-card-cover" onclick="openProject(\'' + p.id + '\')" role="button" tabindex="0">' +
+      '<button type="button" aria-label="进入' + escapeProjectText(p.name) + '" class="space-card-cover" onclick="openProject(\'' + p.id + '\')" >' +
         (p.cover ? '<img class="space-card-cover-img" src="' + p.cover + '" alt="" loading="lazy">' : '<div class="space-card-cover-bg" style="background:linear-gradient(135deg,' + p.color + '33,#1a1a1a)"></div>') +
         doneBadge +
-      '</div>' +
+      '</button>' +
       '<footer class="space-card-footer">' +
         '<span class="space-card-type-icon"><svg class="svg-icon"><use xlink:href="#icon-space-workbench"/></svg></span>' +
         '<div class="space-card-text">' +
-          '<span class="space-card-title">' + p.name + '</span>' +
+          '<span class="space-card-title">' + escapeProjectText(p.name) + '</span>' +
           '<small>' + p.episodes + ' 集 · ' + p.updated + '</small>' +
           '<div class="space-card-dirs">' + dirs + '</div>' +
         '</div>' +

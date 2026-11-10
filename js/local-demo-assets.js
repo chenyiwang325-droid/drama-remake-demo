@@ -1823,7 +1823,7 @@
   var _vgWheelQuietT = 0;
   function _vgOnWheel(e) {
     var vg = document.getElementById('v-g');
-    if (!vg || !vg.classList.contains('vg-studio-on')) return;
+    if (!vg || !vg.classList.contains('vg-studio-on') || matchMedia('(max-width:760px)').matches) return;
     var main = vg.querySelector('.sb-col-main');
     if (!main || !main.contains(e.target)) return;
     // 文本框/弹窗内：让其自身滚动，不翻页
@@ -2237,7 +2237,7 @@
         var tools = document.createElement('div');
         tools.className = 'vg-video-tools';
         tools.innerHTML =
-          '<button type="button" class="vg-tool-btn" title="播放/暂停当前片段" onclick="event.stopPropagation();var v=this.closest(\'section\').querySelector(\'video\');if(v){v.paused?v.play():v.pause();}"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span>播放片段</span></button>' +
+          '<button type="button" class="vg-tool-btn" title="放大当前镜头的静态参考帧" onclick="var frame=this.closest(\'section\').querySelector(\'.sb-preview-frame[data-poster]\');if(frame)frame.click();else toast(\'当前镜头尚无参考帧\');"><span>查看参考帧</span></button>' +
           '<button type="button" class="vg-tool-btn" title="预览完整一集（拼接播放）" onclick="event.stopPropagation();if(typeof openSbPreviewModal===\'function\')openSbPreviewModal()"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg><span>预览全集</span></button>' +
           '<button type="button" class="vg-tool-btn vg-tool-btn--save" title="保存视频：当前片段 / 完整一集 / 批量下载本集" onclick="event.stopPropagation();_toggleVgSaveMenu(event,' + ep + ',\'' + sid + '\')"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><span>保存视频</span></button>' +
           '<button type="button" class="vg-tool-btn" title="查看本镜历史版本" onclick="event.stopPropagation();if(typeof openShotHistoryModal===\'function\')openShotHistoryModal(' + ep + ',' + sid + ')"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>历史版本</span></button>';

@@ -6,6 +6,8 @@
   <title>DRAMA REMAKE · 短剧重制示例</title>
   <link rel="stylesheet" href="css/drama-demo.css" />
   <link rel="stylesheet" href="css/local-demo-assets.css" />
+  <link rel="stylesheet" href="css/workspace-responsive.css" />
+  <link rel="icon" href="data:," />
   <script>
     // ── 本地 Demo 最早拦截：img/video 的 /files/ 原生加载改写到本地 images/ ──
     // 必须在 <head> 执行，早于 body 内静态 img/video 解析，消除 /files/ 404
@@ -113,9 +115,9 @@
 </svg>
 <nav class="topnav">
   <div class="topnav-left">
-    <a class="brand" onclick="sw('plist');return false" title="返回项目列表"><svg class="app-logo-icon"><use xlink:href="#icon-app-logo"/></svg></a>
+    <a class="brand" href="index.html" aria-label="返回项目列表" onclick="sw('plist');return false" title="返回项目列表"><svg class="app-logo-icon"><use xlink:href="#icon-app-logo"/></svg></a>
     <span class="topnav-divider">｜</span>
-    <span class="drama-remake-tag">短剧重制智能体<span class="topnav-project-name">· 示例短剧</span></span>
+    <span class="drama-remake-tag">短剧重制智能体<span id="topnav-project-info" class="topnav-project-name">· 示例短剧</span></span>
     <!-- 角色标签由 JS 动态设置：管理员→"管理成员"，成员→"查看权限" -->
     <span class="topnav-role-badge is-admin" title="管理员 · 点击管理成员" onclick="event.stopPropagation();if(typeof openMemberPanel==='function')openMemberPanel();">管理员</span>
       <button class="topnav-back" type="button" onclick="sw('plist');return false" title="返回项目列表">返回项目列表</button>
@@ -1097,7 +1099,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '安小姐')">
           <div class="char-group-rep">
             
-            <img src="images/Anna_Adams_Light_Yellow_Slip_Dress.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Anna_Adams_Light_Yellow_Slip_Dress.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1140,7 +1142,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Anna_Adams_Light_Yellow_Slip_Dress.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Anna_Adams_Light_Yellow_Slip_Dress.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1163,7 +1165,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '姜总')">
           <div class="char-group-rep">
             
-            <img src="images/Liam_Carter_Black_Suit.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Liam_Carter_Black_Suit.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1206,7 +1208,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Liam_Carter_Black_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Liam_Carter_Black_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1228,7 +1230,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Liam_Carter_Black_Suit_Tie.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Liam_Carter_Black_Suit_Tie.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1250,7 +1252,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Liam_Carter_Black_Three_Piece_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Liam_Carter_Black_Three_Piece_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1272,7 +1274,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Liam_Carter_Dark_Gray_Silk_Robe.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Liam_Carter_Dark_Gray_Silk_Robe.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1294,7 +1296,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Liam_Carter_Dark_Gray_Pajamas.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Liam_Carter_Dark_Gray_Pajamas.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1316,7 +1318,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Liam_Carter_White_Shirt_Khaki_Pants.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Liam_Carter_White_Shirt_Khaki_Pants.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1339,7 +1341,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '助理')">
           <div class="char-group-rep">
             
-            <img src="images/Assistant_David_Dark_Suit.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Assistant_David_Dark_Suit.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1382,7 +1384,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Assistant_David_Dark_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Assistant_David_Dark_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1405,7 +1407,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '富婆')">
           <div class="char-group-rep">
             
-            <img src="images/Mrs_Sterling_Pink_Dress.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Mrs_Sterling_Pink_Dress.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1448,7 +1450,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Mrs_Sterling_Pink_Dress.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Mrs_Sterling_Pink_Dress.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1470,7 +1472,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Mrs_Sterling_Pink_Silk_Dress.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Mrs_Sterling_Pink_Silk_Dress.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1493,7 +1495,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '阳阳')">
           <div class="char-group-rep">
             
-            <img src="images/Mia_White_Manager_Uniform.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Mia_White_Manager_Uniform.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1536,7 +1538,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Mia_White_Manager_Uniform.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Mia_White_Manager_Uniform.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1559,7 +1561,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '沈父')">
           <div class="char-group-rep">
             
-            <img src="images/Mr_Smith_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Mr_Smith_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1602,7 +1604,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Mr_Smith_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Mr_Smith_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1625,7 +1627,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '沈母')">
           <div class="char-group-rep">
             
-            <img src="images/Mrs_Smith_White_Tweed_Suit.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Mrs_Smith_White_Tweed_Suit.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1668,7 +1670,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Mrs_Smith_White_Tweed_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Mrs_Smith_White_Tweed_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1691,7 +1693,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '路人女甲')">
           <div class="char-group-rep">
             
-            <img src="images/Passerby_Woman_A_Black_Sleeveless_Top.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Passerby_Woman_A_Black_Sleeveless_Top.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1734,7 +1736,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Passerby_Woman_A_Black_Sleeveless_Top.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Passerby_Woman_A_Black_Sleeveless_Top.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1757,7 +1759,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '路人女乙')">
           <div class="char-group-rep">
             
-            <img src="images/Passerby_Woman_B_Light_Purple_Dress.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Passerby_Woman_B_Light_Purple_Dress.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1800,7 +1802,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Passerby_Woman_B_Light_Purple_Dress.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Passerby_Woman_B_Light_Purple_Dress.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1823,7 +1825,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '女佣')">
           <div class="char-group-rep">
             
-            <img src="images/Maid_Gray_Uniform.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Maid_Gray_Uniform.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1866,7 +1868,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Maid_Gray_Uniform.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Maid_Gray_Uniform.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1889,7 +1891,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '骚扰男')">
           <div class="char-group-rep">
             
-            <img src="images/Harassing_Man_Black_Striped_Suit.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Harassing_Man_Black_Striped_Suit.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1932,7 +1934,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Harassing_Man_Black_Striped_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Harassing_Man_Black_Striped_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -1955,7 +1957,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '粉裙贵妇')">
           <div class="char-group-rep">
             
-            <img src="images/Pink_Dress_Lady_Pink_Silk_Dress.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Pink_Dress_Lady_Pink_Silk_Dress.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -1998,7 +2000,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Pink_Dress_Lady_Pink_Silk_Dress.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Pink_Dress_Lady_Pink_Silk_Dress.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2021,7 +2023,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '姜老太太')">
           <div class="char-group-rep">
             
-            <img src="images/Old_Mrs_Carter_Black_Vintage_Jacket.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Old_Mrs_Carter_Black_Vintage_Jacket.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -2064,7 +2066,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Old_Mrs_Carter_Black_Vintage_Jacket.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Old_Mrs_Carter_Black_Vintage_Jacket.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2086,7 +2088,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Old_Mrs_Carter_Dark_Velvet_Jacket.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Old_Mrs_Carter_Dark_Velvet_Jacket.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2109,7 +2111,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '姜父')">
           <div class="char-group-rep">
             
-            <img src="images/Mr_Carter_Sr_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Mr_Carter_Sr_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -2152,7 +2154,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Mr_Carter_Sr_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Mr_Carter_Sr_Dark_Gray_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2175,7 +2177,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '姜太太')">
           <div class="char-group-rep">
             
-            <img src="images/Chloe_Carter_Light_Cyan_Evening_Dress.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Chloe_Carter_Light_Cyan_Evening_Dress.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -2220,7 +2222,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_Light_Cyan_Evening_Dress.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_Light_Cyan_Evening_Dress.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2242,7 +2244,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_Black_Business_Suit.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_Black_Business_Suit.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2264,7 +2266,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_White_Wedding_Dress.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_White_Wedding_Dress.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2286,7 +2288,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_Black_Lace_Pajamas.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_Black_Lace_Pajamas.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2308,7 +2310,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_Black_Suit_Set.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_Black_Suit_Set.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2330,7 +2332,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_White_Pajamas.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_White_Pajamas.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2352,7 +2354,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_White_Robe.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_White_Robe.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2374,7 +2376,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Chloe_Carter_White_Shirt_Black_Skirt.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Chloe_Carter_White_Shirt_Black_Skirt.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2398,7 +2400,7 @@
                 <span class="char-outfit-alias-badge">别名指代</span>
                 
                 
-                <img src="images/Sophia_Smith_Black_White_Top.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Sophia_Smith_Black_White_Top.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2426,7 +2428,7 @@
                 <span class="char-outfit-alias-badge">别名指代</span>
                 
                 
-                <img src="images/Sophia_Smith_Wrapped_White_Robe.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Sophia_Smith_Wrapped_White_Robe.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2454,7 +2456,7 @@
                 <span class="char-outfit-alias-badge">别名指代</span>
                 
                 
-                <img src="images/Sophia_Smith_Black_Manager_Uniform.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Sophia_Smith_Black_Manager_Uniform.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2481,7 +2483,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('characters', '段枫')">
           <div class="char-group-rep">
             
-            <img src="images/Dylan_Beige_Vest.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Dylan_Beige_Vest.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -2526,7 +2528,7 @@
               <div class="char-outfit-img">
                 
                 
-                <img src="images/Dylan_Beige_Vest.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Dylan_Beige_Vest.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2550,7 +2552,7 @@
                 <span class="char-outfit-alias-badge">别名指代</span>
                 
                 
-                <img src="images/Ex_boyfriend_Black_Suit_White_Edges.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Ex_boyfriend_Black_Suit_White_Edges.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -2596,7 +2598,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_Light_Cyan_Evening_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_Light_Cyan_Evening_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_浅青色旗袍">
               <div class="asset-ref-preview-title">参考图</div>
@@ -2676,7 +2678,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Anna_Adams_Light_Yellow_Slip_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Anna_Adams_Light_Yellow_Slip_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="安小姐_淡黄色吊带裙">
               <div class="asset-ref-preview-title">参考图</div>
@@ -2756,7 +2758,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Liam_Carter_Black_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Liam_Carter_Black_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜总_黑色西装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -2836,7 +2838,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Assistant_David_Dark_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Assistant_David_Dark_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="助理_深色西装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -2916,7 +2918,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Sophia_Smith_Black_White_Top.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Sophia_Smith_Black_White_Top.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="宋言之_黑白拼色上衣">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3000,7 +3002,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Dylan_Beige_Vest.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Dylan_Beige_Vest.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="段枫_米色马甲">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3080,7 +3082,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Mrs_Sterling_Pink_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Mrs_Sterling_Pink_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="富婆_粉色连衣裙">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3160,7 +3162,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Liam_Carter_Black_Suit_Tie.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Liam_Carter_Black_Suit_Tie.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜总_黑色西装领带">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3240,7 +3242,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Sophia_Smith_Wrapped_White_Robe.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Sophia_Smith_Wrapped_White_Robe.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="宋言之_裹身白被">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3324,7 +3326,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Sophia_Smith_Black_Manager_Uniform.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Sophia_Smith_Black_Manager_Uniform.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="宋言之_黑色大堂经理制服">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3408,7 +3410,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Mia_White_Manager_Uniform.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Mia_White_Manager_Uniform.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="阳阳_白色大堂经理制服">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3488,7 +3490,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Mr_Smith_Dark_Gray_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Mr_Smith_Dark_Gray_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="沈父_深灰色西装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3568,7 +3570,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Mrs_Smith_White_Tweed_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Mrs_Smith_White_Tweed_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="沈母_白色小香风套装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3648,7 +3650,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Passerby_Woman_A_Black_Sleeveless_Top.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Passerby_Woman_A_Black_Sleeveless_Top.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="路人女甲_黑色无袖上衣">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3728,7 +3730,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Passerby_Woman_B_Light_Purple_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Passerby_Woman_B_Light_Purple_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="路人女乙_浅紫色连衣裙">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3808,7 +3810,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_Black_Business_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_Black_Business_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_黑色职业装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3892,7 +3894,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_White_Wedding_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_White_Wedding_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_白色婚纱">
               <div class="asset-ref-preview-title">参考图</div>
@@ -3976,7 +3978,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Liam_Carter_Black_Three_Piece_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Liam_Carter_Black_Three_Piece_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜总_黑色三件套西装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4056,7 +4058,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_Black_Lace_Pajamas.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_Black_Lace_Pajamas.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_黑色蕾丝睡衣">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4140,7 +4142,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_Black_Suit_Set.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_Black_Suit_Set.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_黑色西服套装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4224,7 +4226,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_White_Pajamas.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_White_Pajamas.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_白色睡衣">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4308,7 +4310,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Liam_Carter_Dark_Gray_Silk_Robe.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Liam_Carter_Dark_Gray_Silk_Robe.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜总_深灰色真丝睡袍">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4388,7 +4390,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Maid_Gray_Uniform.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Maid_Gray_Uniform.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="女佣_灰色制服">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4468,7 +4470,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_White_Robe.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_White_Robe.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_白色睡袍">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4552,7 +4554,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Chloe_Carter_White_Shirt_Black_Skirt.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Chloe_Carter_White_Shirt_Black_Skirt.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜太太_白衣黑裙">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4636,7 +4638,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Liam_Carter_Dark_Gray_Pajamas.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Liam_Carter_Dark_Gray_Pajamas.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜总_深灰睡衣">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4716,7 +4718,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Liam_Carter_White_Shirt_Khaki_Pants.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Liam_Carter_White_Shirt_Khaki_Pants.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜总_白衬衫卡其裤">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4796,7 +4798,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Ex_boyfriend_Black_Suit_White_Edges.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Ex_boyfriend_Black_Suit_White_Edges.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="前男友_黑色白边西装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4880,7 +4882,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Mrs_Sterling_Pink_Silk_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Mrs_Sterling_Pink_Silk_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="富婆_粉色丝绸裙">
               <div class="asset-ref-preview-title">参考图</div>
@@ -4960,7 +4962,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Harassing_Man_Black_Striped_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Harassing_Man_Black_Striped_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="骚扰男_黑西装白条纹">
               <div class="asset-ref-preview-title">参考图</div>
@@ -5040,7 +5042,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Pink_Dress_Lady_Pink_Silk_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Pink_Dress_Lady_Pink_Silk_Dress.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="粉裙贵妇_粉色丝绸裙">
               <div class="asset-ref-preview-title">参考图</div>
@@ -5120,7 +5122,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Old_Mrs_Carter_Black_Vintage_Jacket.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Old_Mrs_Carter_Black_Vintage_Jacket.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜老太太_黑色唐装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -5200,7 +5202,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Mr_Carter_Sr_Dark_Gray_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Mr_Carter_Sr_Dark_Gray_Suit.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜父_深灰西装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -5280,7 +5282,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img class="thumb" src="images/Old_Mrs_Carter_Dark_Velvet_Jacket.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
+            <img loading="lazy" decoding="async" class="thumb" src="images/Old_Mrs_Carter_Dark_Velvet_Jacket.png" alt="" width="176" height="176" referrerpolicy="no-referrer"/>
             
             <div class="asset-ref-preview" data-asset-id="姜老太太_深色丝绒唐装">
               <div class="asset-ref-preview-title">参考图</div>
@@ -5364,7 +5366,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '濯樱桥')">
           <div class="char-group-rep">
             
-            <img src="images/estate_garden_bridge_night_light.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/estate_garden_bridge_night_light.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5394,7 +5396,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '濯樱桥_夜晚灯光', '濯樱桥')">
               <div class="char-outfit-img">
                 
-                <img src="images/estate_garden_bridge_night_light.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/estate_garden_bridge_night_light.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5415,7 +5417,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '濯樱桥_户外晚宴', '濯樱桥')">
               <div class="char-outfit-img">
                 
-                <img src="images/estate_garden_bridge_outdoor_banquet_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/estate_garden_bridge_outdoor_banquet_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5441,7 +5443,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '姜家卧室')">
           <div class="char-group-rep">
             
-            <img src="images/mansion_master_bedroom_night_warm_v0001.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/mansion_master_bedroom_night_warm_v0001.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5471,7 +5473,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '姜家卧室_夜晚暖光', '姜家卧室')">
               <div class="char-outfit-img">
                 
-                <img src="images/mansion_master_bedroom_night_warm_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/mansion_master_bedroom_night_warm_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5492,7 +5494,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '姜家卧室_夜晚冷调', '姜家卧室')">
               <div class="char-outfit-img">
                 
-                <img src="images/mansion_master_bedroom_night_cold_v0002.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/mansion_master_bedroom_night_cold_v0002.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5518,7 +5520,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '酒店楼梯间')">
           <div class="char-group-rep">
             
-            <img src="images/hotel_stairwell_night_warm.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/hotel_stairwell_night_warm.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5548,7 +5550,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店楼梯间_夜晚暖光', '酒店楼梯间')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_stairwell_night_warm.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_stairwell_night_warm.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5570,7 +5572,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '酒店客房')">
           <div class="char-group-rep">
             
-            <img src="images/hotel_room_night_blue_v0002.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/hotel_room_night_blue_v0002.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5600,7 +5602,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店客房_夜晚蓝光', '酒店客房')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_room_night_blue_v0002.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_room_night_blue_v0002.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5621,7 +5623,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店客房_早晨阳光', '酒店客房')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_room_morning_sun_v0002.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_room_morning_sun_v0002.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5646,7 +5648,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店客房_夜晚蓝调', '酒店客房')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_room_night_blues_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_room_night_blues_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5672,7 +5674,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '酒店大堂前台')">
           <div class="char-group-rep">
             
-            <img src="images/hotel_lobby_reception_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/hotel_lobby_reception_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5702,7 +5704,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店大堂前台_白天明亮', '酒店大堂前台')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_lobby_reception_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_lobby_reception_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5724,7 +5726,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '酒店门口')">
           <div class="char-group-rep">
             
-            <img src="images/hotel_entrance_day_outdoor.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/hotel_entrance_day_outdoor.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5754,7 +5756,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店门口_白天室外', '酒店门口')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_entrance_day_outdoor.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_entrance_day_outdoor.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5776,7 +5778,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '酒店VIP室')">
           <div class="char-group-rep">
             
-            <img src="images/hotel_vip_lounge_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/hotel_vip_lounge_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5806,7 +5808,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店VIP室_白天明亮', '酒店VIP室')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_vip_lounge_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_vip_lounge_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5828,7 +5830,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '酒店休息区')">
           <div class="char-group-rep">
             
-            <img src="images/hotel_lounge_area_day_bright.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/hotel_lounge_area_day_bright.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5858,7 +5860,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '酒店休息区_白天明亮', '酒店休息区')">
               <div class="char-outfit-img">
                 
-                <img src="images/hotel_lounge_area_day_bright.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/hotel_lounge_area_day_bright.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5880,7 +5882,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '婚礼宣誓区')">
           <div class="char-group-rep">
             
-            <img src="images/wedding_vow_area_bright_floral_v0001.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/wedding_vow_area_bright_floral_v0001.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5910,7 +5912,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '婚礼宣誓区_明亮花艺', '婚礼宣誓区')">
               <div class="char-outfit-img">
                 
-                <img src="images/wedding_vow_area_bright_floral_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/wedding_vow_area_bright_floral_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5932,7 +5934,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '总裁办公室')">
           <div class="char-group-rep">
             
-            <img src="images/ceo_office_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/ceo_office_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -5962,7 +5964,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '总裁办公室_白天明亮', '总裁办公室')">
               <div class="char-outfit-img">
                 
-                <img src="images/ceo_office_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/ceo_office_day_bright_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -5984,7 +5986,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '姜家起居室')">
           <div class="char-group-rep">
             
-            <img src="images/mansion_living_room_night_dark.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/mansion_living_room_night_dark.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -6014,7 +6016,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '姜家起居室_夜晚暗光', '姜家起居室')">
               <div class="char-outfit-img">
                 
-                <img src="images/mansion_living_room_night_dark.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/mansion_living_room_night_dark.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -6036,7 +6038,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '姜家客厅')">
           <div class="char-group-rep">
             
-            <img src="images/mansion_great_room_day_sun.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/mansion_great_room_day_sun.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -6066,7 +6068,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '姜家客厅_白天阳光', '姜家客厅')">
               <div class="char-outfit-img">
                 
-                <img src="images/mansion_great_room_day_sun.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/mansion_great_room_day_sun.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -6088,7 +6090,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '中式庭院')">
           <div class="char-group-rep">
             
-            <img src="images/estate_courtyard_night_light.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/estate_courtyard_night_light.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -6118,7 +6120,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '中式庭院_夜晚灯光', '中式庭院')">
               <div class="char-outfit-img">
                 
-                <img src="images/estate_courtyard_night_light.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/estate_courtyard_night_light.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -6140,7 +6142,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '姜家老宅庭院')">
           <div class="char-group-rep">
             
-            <img src="images/mansion_vintage_courtyard_night_banquet_v0001.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/mansion_vintage_courtyard_night_banquet_v0001.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -6170,7 +6172,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '姜家老宅庭院_夜晚晚宴', '姜家老宅庭院')">
               <div class="char-outfit-img">
                 
-                <img src="images/mansion_vintage_courtyard_night_banquet_v0001.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/mansion_vintage_courtyard_night_banquet_v0001.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -6192,7 +6194,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('scenes', '姜家老宅院子')">
           <div class="char-group-rep">
             
-            <img src="images/mansion_vintage_courtyard_night_party.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/mansion_vintage_courtyard_night_party.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -6222,7 +6224,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('scenes', '姜家老宅院子_夜晚宴会', '姜家老宅院子')">
               <div class="char-outfit-img">
                 
-                <img src="images/mansion_vintage_courtyard_night_party.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/mansion_vintage_courtyard_night_party.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -6262,7 +6264,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/estate_garden_bridge_night_light.png"
               alt=""
@@ -6349,7 +6351,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/mansion_master_bedroom_night_warm_v0001.png"
               alt=""
@@ -6436,7 +6438,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_stairwell_night_warm.png"
               alt=""
@@ -6523,7 +6525,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_room_night_blue_v0002.png"
               alt=""
@@ -6610,7 +6612,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_room_morning_sun_v0002.png"
               alt=""
@@ -6701,7 +6703,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_lobby_reception_day_bright_v0001.png"
               alt=""
@@ -6788,7 +6790,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_entrance_day_outdoor.png"
               alt=""
@@ -6875,7 +6877,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_vip_lounge_day_bright_v0001.png"
               alt=""
@@ -6962,7 +6964,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_lounge_area_day_bright.png"
               alt=""
@@ -7049,7 +7051,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/hotel_room_night_blues_v0001.png"
               alt=""
@@ -7140,7 +7142,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/wedding_vow_area_bright_floral_v0001.png"
               alt=""
@@ -7227,7 +7229,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/ceo_office_day_bright_v0001.png"
               alt=""
@@ -7314,7 +7316,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/mansion_master_bedroom_night_cold_v0002.png"
               alt=""
@@ -7405,7 +7407,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/mansion_living_room_night_dark.png"
               alt=""
@@ -7492,7 +7494,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/mansion_great_room_day_sun.png"
               alt=""
@@ -7579,7 +7581,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/estate_courtyard_night_light.png"
               alt=""
@@ -7666,7 +7668,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/estate_garden_bridge_outdoor_banquet_v0001.png"
               alt=""
@@ -7757,7 +7759,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/mansion_vintage_courtyard_night_banquet_v0001.png"
               alt=""
@@ -7844,7 +7846,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/mansion_vintage_courtyard_night_party.png"
               alt=""
@@ -7934,7 +7936,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '亲密照片')">
           <div class="char-group-rep">
             
-            <img src="images/Intimate_Photos.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Intimate_Photos.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -7964,7 +7966,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '亲密照片', '亲密照片')">
               <div class="char-outfit-img">
                 
-                <img src="images/Intimate_Photos.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Intimate_Photos.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -7986,7 +7988,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '钻戒')">
           <div class="char-group-rep">
             
-            <img src="images/Diamond_Ring.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Diamond_Ring.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8016,7 +8018,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '钻戒', '钻戒')">
               <div class="char-outfit-img">
                 
-                <img src="images/Diamond_Ring.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Diamond_Ring.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8038,7 +8040,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '啤酒瓶')">
           <div class="char-group-rep">
             
-            <img src="images/Beer_Can.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Beer_Can.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8068,7 +8070,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '啤酒瓶', '啤酒瓶')">
               <div class="char-outfit-img">
                 
-                <img src="images/Beer_Can.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Beer_Can.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8090,7 +8092,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '领带')">
           <div class="char-group-rep">
             
-            <img src="images/Necktie.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Necktie.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8120,7 +8122,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '领带', '领带')">
               <div class="char-outfit-img">
                 
-                <img src="images/Necktie.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Necktie.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8142,7 +8144,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '粉饼盒')">
           <div class="char-group-rep">
             
-            <img src="images/Compact_Powder.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Compact_Powder.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8172,7 +8174,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '粉饼盒', '粉饼盒')">
               <div class="char-outfit-img">
                 
-                <img src="images/Compact_Powder.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Compact_Powder.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8194,7 +8196,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '咖啡杯')">
           <div class="char-group-rep">
             
-            <img src="images/Coffee_Cup.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Coffee_Cup.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8224,7 +8226,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '咖啡杯', '咖啡杯')">
               <div class="char-outfit-img">
                 
-                <img src="images/Coffee_Cup.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Coffee_Cup.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8246,7 +8248,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '定制礼服')">
           <div class="char-group-rep">
             
-            <img src="images/Custom_Evening_Gown.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Custom_Evening_Gown.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8276,7 +8278,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '定制礼服', '定制礼服')">
               <div class="char-outfit-img">
                 
-                <img src="images/Custom_Evening_Gown.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Custom_Evening_Gown.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8298,7 +8300,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '黑色轿车')">
           <div class="char-group-rep">
             
-            <img src="images/Black_Luxury_Sedan.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Black_Luxury_Sedan.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8328,7 +8330,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '黑色轿车', '黑色轿车')">
               <div class="char-outfit-img">
                 
-                <img src="images/Black_Luxury_Sedan.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Black_Luxury_Sedan.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8350,7 +8352,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '珍珠项链')">
           <div class="char-group-rep">
             
-            <img src="images/Pearl_Necklace.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Pearl_Necklace.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8380,7 +8382,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '珍珠项链', '珍珠项链')">
               <div class="char-outfit-img">
                 
-                <img src="images/Pearl_Necklace.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Pearl_Necklace.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8402,7 +8404,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '古董花瓶')">
           <div class="char-group-rep">
             
-            <img src="images/Antique_Vase.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Antique_Vase.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8432,7 +8434,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '古董花瓶', '古董花瓶')">
               <div class="char-outfit-img">
                 
-                <img src="images/Antique_Vase.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Antique_Vase.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8454,7 +8456,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '陕北苹果')">
           <div class="char-group-rep">
             
-            <img src="images/Washington_Apple.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Washington_Apple.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8484,7 +8486,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '陕北苹果', '陕北苹果')">
               <div class="char-outfit-img">
                 
-                <img src="images/Washington_Apple.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Washington_Apple.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8506,7 +8508,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '小木盒')">
           <div class="char-group-rep">
             
-            <img src="images/Small_Wooden_Box.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Small_Wooden_Box.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8536,7 +8538,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '小木盒', '小木盒')">
               <div class="char-outfit-img">
                 
-                <img src="images/Small_Wooden_Box.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Small_Wooden_Box.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8558,7 +8560,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '翠绿玉镯')">
           <div class="char-group-rep">
             
-            <img src="images/Emerald_Bracelet.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Emerald_Bracelet.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8588,7 +8590,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '翠绿玉镯', '翠绿玉镯')">
               <div class="char-outfit-img">
                 
-                <img src="images/Emerald_Bracelet.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Emerald_Bracelet.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8610,7 +8612,7 @@
         <div class="char-group-header" onclick="toggleAssetGroup('props', '玉镯')">
           <div class="char-group-rep">
             
-            <img src="images/Emerald_Bangle.png" alt="" referrerpolicy="no-referrer">
+            <img loading="lazy" decoding="async" src="images/Emerald_Bangle.png" alt="" referrerpolicy="no-referrer">
             
           </div>
           <div class="char-group-info">
@@ -8640,7 +8642,7 @@
             <div class="char-outfit-card" onclick="openAssetEdit('props', '玉镯', '玉镯')">
               <div class="char-outfit-img">
                 
-                <img src="images/Emerald_Bangle.png" alt="" referrerpolicy="no-referrer">
+                <img loading="lazy" decoding="async" src="images/Emerald_Bangle.png" alt="" referrerpolicy="no-referrer">
                 
               </div>
               <div class="char-outfit-body">
@@ -8680,7 +8682,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Intimate_Photos.png"
               alt=""
@@ -8767,7 +8769,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Diamond_Ring.png"
               alt=""
@@ -8854,7 +8856,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Beer_Can.png"
               alt=""
@@ -8941,7 +8943,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Necktie.png"
               alt=""
@@ -9028,7 +9030,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Compact_Powder.png"
               alt=""
@@ -9115,7 +9117,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Coffee_Cup.png"
               alt=""
@@ -9202,7 +9204,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Custom_Evening_Gown.png"
               alt=""
@@ -9289,7 +9291,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Black_Luxury_Sedan.png"
               alt=""
@@ -9376,7 +9378,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Pearl_Necklace.png"
               alt=""
@@ -9463,7 +9465,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Antique_Vase.png"
               alt=""
@@ -9550,7 +9552,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Washington_Apple.png"
               alt=""
@@ -9637,7 +9639,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Small_Wooden_Box.png"
               alt=""
@@ -9724,7 +9726,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Emerald_Bracelet.png"
               alt=""
@@ -9811,7 +9813,7 @@
         <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start">
           <div style="flex-shrink: 0">
             
-            <img
+            <img loading="lazy" decoding="async"
               class="thumb"
               src="images/Emerald_Bangle.png"
               alt=""
@@ -15097,7 +15099,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '1', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -15120,7 +15122,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '1', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -15143,7 +15145,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '1', 'asset/Beer_Can.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Beer_Can.png"
                     alt=""
                     title="asset/Beer_Can.png"
@@ -15194,7 +15196,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/1.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -15322,7 +15324,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '2', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -15345,7 +15347,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '2', 'asset/Mrs_Sterling_Pink_Dress.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Mrs_Sterling_Pink_Dress.png"
                     alt=""
                     title="asset/Mrs_Sterling_Pink_Dress.png"
@@ -15368,7 +15370,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '2', 'asset/Dylan_Beige_Vest.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Dylan_Beige_Vest.png"
                     alt=""
                     title="asset/Dylan_Beige_Vest.png"
@@ -15419,7 +15421,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/2.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -15547,7 +15549,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '3', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -15570,7 +15572,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '3', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -15593,7 +15595,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '3', 'asset/Beer_Can.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Beer_Can.png"
                     alt=""
                     title="asset/Beer_Can.png"
@@ -15644,7 +15646,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/3.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -15768,7 +15770,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '4', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -15791,7 +15793,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '4', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -15842,7 +15844,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/4.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -15974,7 +15976,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '5', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -15997,7 +15999,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '5', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -16020,7 +16022,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '5', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -16043,7 +16045,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '5', 'asset/Beer_Can.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Beer_Can.png"
                     alt=""
                     title="asset/Beer_Can.png"
@@ -16094,7 +16096,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/5.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -16231,7 +16233,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '6', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -16254,7 +16256,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '6', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -16277,7 +16279,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '6', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -16300,7 +16302,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '6', 'asset/Beer_Can.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Beer_Can.png"
                     alt=""
                     title="asset/Beer_Can.png"
@@ -16351,7 +16353,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/6.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -16479,7 +16481,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '7', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -16502,7 +16504,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '7', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -16525,7 +16527,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '7', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -16576,7 +16578,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/7.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -16708,7 +16710,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '8', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -16731,7 +16733,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '8', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -16754,7 +16756,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '8', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -16777,7 +16779,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '8', 'asset/Necktie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Necktie.png"
                     alt=""
                     title="asset/Necktie.png"
@@ -16828,7 +16830,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/8.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -16960,7 +16962,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '9', 'asset/hotel_room_night_blue_v0002.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_room_night_blue_v0002.png"
                     alt=""
                     title="asset/hotel_room_night_blue_v0002.png"
@@ -16983,7 +16985,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '9', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -17006,7 +17008,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '9', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -17029,7 +17031,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '9', 'asset/Necktie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Necktie.png"
                     alt=""
                     title="asset/Necktie.png"
@@ -17080,7 +17082,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/9.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -17213,7 +17215,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '10', 'asset/hotel_room_night_blue_v0002.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_room_night_blue_v0002.png"
                     alt=""
                     title="asset/hotel_room_night_blue_v0002.png"
@@ -17236,7 +17238,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '10', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -17259,7 +17261,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '10', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -17310,7 +17312,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/10.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -17443,7 +17445,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '11', 'asset/hotel_room_night_blue_v0002.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_room_night_blue_v0002.png"
                     alt=""
                     title="asset/hotel_room_night_blue_v0002.png"
@@ -17466,7 +17468,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '11', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -17489,7 +17491,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '11', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -17540,7 +17542,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/11.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
@@ -17672,7 +17674,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '12', 'asset/hotel_stairwell_night_warm.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/hotel_stairwell_night_warm.png"
                     alt=""
                     title="asset/hotel_stairwell_night_warm.png"
@@ -17695,7 +17697,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '12', 'asset/Liam_Carter_Black_Suit_Tie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Liam_Carter_Black_Suit_Tie.png"
                     alt=""
                     title="asset/Liam_Carter_Black_Suit_Tie.png"
@@ -17718,7 +17720,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '12', 'asset/Sophia_Smith_Black_White_Top.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Sophia_Smith_Black_White_Top.png"
                     alt=""
                     title="asset/Sophia_Smith_Black_White_Top.png"
@@ -17741,7 +17743,7 @@
                     title="移除"
                     onclick="event.stopPropagation(); removeShotRefImg(1, '12', 'asset/Necktie.png')"
                   >✕</button>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="images/Necktie.png"
                     alt=""
                     title="asset/Necktie.png"
@@ -17792,7 +17794,7 @@
               
               
               <div class="sb-gen-status ok">已生成 · 可预览</div>
-              <video class="sb-preview-video" controls src="/files/sample-drama/1/12.mp4"></video>
+              <video class="sb-preview-video" preload="none" aria-label="示例预览"></video>
               
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
                 <button
