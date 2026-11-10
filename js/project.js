@@ -7797,7 +7797,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // 点击海报 → 全屏 lightbox（用图片模拟播放）
-  function _openDemoLightbox(poster) {
+  function _openDemoLightbox(poster, frame) {
+    if (document.querySelector('dialog.reference-dialog[open]')) return;
+    const opener = frame.querySelector('button') || document.activeElement;
     var ov = document.createElement('dialog');
     ov.className = 'reference-dialog';
     ov.setAttribute('aria-label', '本镜参考帧');
@@ -7807,11 +7809,39 @@ document.addEventListener("DOMContentLoaded", function () {
     var button = document.createElement('button'); button.type = 'button';
     button.setAttribute('aria-label','关闭参考帧'); button.textContent = '关闭';
     ov.append(img,label,button); document.body.appendChild(ov);
-    button.addEventListener('click', function(){ ov.close(); });
-    ov.addEventListener('click',function(e){ if(e.target === ov) ov.close(); });
-    ov.addEventListener('close',function(){ov.remove();},{once:true});
-    ov.addEventListener('keydown', function(e){if(e.key==='Escape'){e.preventDefault();e.stopPropagation();ov.close();}});
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    let animation;
+    function frameTransform() {
+      const origin = frame.getBoundingClientRect(), box = ov.getBoundingClientRect();
+      const x = origin.left + origin.width / 2 - box.left - box.width / 2;
+      const y = origin.top + origin.height / 2 - box.top - box.height / 2;
+      const scale = Math.min(1, Math.max(.45, origin.width / box.width));
+      return 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ')';
+    }
+    function dismiss() {
+      if (!ov.open || ov.hasAttribute('data-closing')) return;
+      const current = { transform:getComputedStyle(ov).transform, opacity:getComputedStyle(ov).opacity };
+      if (animation) animation.cancel();
+      if (reduce.matches || !ov.animate) { ov.close(); return; }
+      ov.setAttribute('data-closing','');
+      animation = ov.animate([current, {transform:frameTransform(),opacity:0}],
+        {duration:140,easing:'cubic-bezier(.4,0,.75,.4)',fill:'both'});
+      animation.onfinish = () => ov.close();
+    }
+    button.addEventListener('click',dismiss);
+    ov.addEventListener('click',e=>{if(e.target===ov)dismiss();});
+    ov.addEventListener('cancel',e=>{e.preventDefault();dismiss();});
+    ov.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();dismiss();}});
+    ov.addEventListener('close',()=>{
+      if(animation)animation.cancel();
+      ov.remove();
+      if(opener && opener.isConnected)opener.focus({preventScroll:true});
+    },{once:true});
     ov.showModal();
+    if(!reduce.matches && ov.animate) {
+      animation=ov.animate([{transform:frameTransform(),opacity:.25},{transform:'none',opacity:1}],
+        {duration:290,easing:'cubic-bezier(.18,.78,.22,1)'});
+    }
   }
 
   function _bindPreviewFrameClick() {
@@ -7822,7 +7852,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var poster = frame.getAttribute('data-poster') || '';
       if (!poster) return;
       e.preventDefault();
-      _openDemoLightbox(poster);
+      _openDemoLightbox(poster, frame);
     });
   }
 
@@ -11538,6 +11568,11 @@ if (document.readyState === 'loading') {
 function openProject(pid) {
   var p = PROJECT_LIST.find(function (x) { return x.id === pid; });
   if (p && window.PAGE_DATA) window.PAGE_DATA.pid = pid;
+  const workspace = document.getElementById('v-p');
+  if (workspace) {
+    const cover = p && /^images\/[A-Za-z0-9_-]+\.(?:png|jpe?g|webp)$/.test(p.cover || '') ? p.cover : '';
+    workspace.style.setProperty('--project-cover', cover ? 'url(' + JSON.stringify(new URL(cover, document.baseURI).href) + ')' : 'none');
+  }
   var info = document.getElementById('topnav-project-info');
   if (info && p) info.textContent = ' · ' + p.name;
   sw('p');

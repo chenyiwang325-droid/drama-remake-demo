@@ -68,3 +68,86 @@
 @media (prefers-reduced-motion:reduce){
  #v-plist .space-card,#v-plist .space-card-cover-img{transition:none;transform:none}
 }
+
+/* Direction and depth stay attached to the original project covers and studio controls. */
+body { --studio-ease:cubic-bezier(.2,.76,.22,1); }
+body.on-plist { background:radial-gradient(ellipse at 68% 0%,#182521 0%,transparent 53%),#0b0d0d; }
+#v-plist .plist-header { padding-block-end:18px; margin-block-end:22px; border-bottom:1px solid #ffffff1c; }
+#v-plist .plist-title { font-size:clamp(23px,2.3vw,34px); font-weight:650; }
+#v-plist .space-card { background:linear-gradient(152deg,#222926,#161a19 68%); border-color:#ffffff25; box-shadow:0 5px 16px #0004; }
+#v-plist .space-card-cover { isolation:isolate; overflow:hidden; }
+#v-plist .space-card-cover::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,transparent 53%,#101a1b35); box-shadow:inset 0 -1px #ffffff12; }
+#v-plist .space-card-footer { padding-block:15px; }
+#v-plist .space-card-title { color:#f0f3ef; }
+#v-plist .space-card-text small { color:#b2bbb5; }
+#v-plist .space-card-dirs { margin-top:8px; }
+#v-plist .space-card:focus-within { border-color:#68d89b99; }
+#v-p #vp-remake-overview .vp-flow-banner { overflow:hidden; padding:0; border-color:#ffffff25; background:#151918; }
+#v-p #vp-remake-overview .vp-flow-banner-head { position:relative; isolation:isolate; min-height:100px; display:grid; align-content:center; padding:22px 26px; margin:0; border-bottom:1px solid #ffffff24; background:#18211e; }
+#v-p #vp-remake-overview .vp-flow-banner-head::before { content:""; position:absolute; inset:0 0 0 24%; z-index:-1; background:linear-gradient(90deg,#18211e 0%,#18211eed 30%,#18211e61 75%,#0d16114d),var(--project-cover,none) center 44% / cover; }
+#v-p #vp-remake-overview .vp-flow-banner-title { color:#f1f6f3; font-size:21px; letter-spacing:-.025em; }
+#v-p #vp-remake-overview .vp-flow-banner-head p { color:#c5d2cb; max-width:72ch; }
+#v-p #vp-remake-overview .vp-flow-stage { border-color:#ffffff20; background:linear-gradient(145deg,#212724,#191e1b); }
+#v-p #vp-remake-overview .vp-flow-stage--vert { margin:12px 16px; }
+#v-a .char-group:hover,#v-a .char-group:focus-within { border-color:#779f8c88; }
+#v-a .char-group-rep { box-shadow:0 0 0 1px #ffffff1c; }
+#v-g.vg-studio-on .vg-reshaped .sb-col-gen { background:radial-gradient(ellipse at center,#242d28 0%,#101312 75%); padding:clamp(12px,1.35vw,22px); }
+#v-g.vg-studio-on .vg-reshaped .vg-edit-col { background:#191d1c; border-color:#ffffff23; }
+#v-g.vg-studio-on .sb-shot-item.on { box-shadow:inset 3px 0 #66e3a0; }
+#v-g .sb-preview-frame { border-color:#ffffff36; box-shadow:0 12px 32px #0007; }
+#v-g .sb-preview-play { background:#101613b5; border:1px solid #ffffff77; color:#fff; }
+dialog.reference-dialog { display:none; overflow:hidden; width:min(1150px,94vw,calc(155dvh - 70px)); max-width:none; max-height:95dvh; padding:9px; border:1px solid #9aafa059; border-radius:14px; background:linear-gradient(150deg,#252c28,#121614); box-shadow:0 22px 96px #000b; box-sizing:border-box; }
+dialog.reference-dialog[open] { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:0 12px; }
+dialog.reference-dialog img { grid-column:1 / -1; width:100%; min-width:0; aspect-ratio:16/9; max-height:calc(92dvh - 60px); object-fit:contain; border-radius:7px; background:#090b0a; }
+dialog.reference-dialog p { margin:10px 3px 0 7px; font-size:12px; color:#cbd5ce; }
+dialog.reference-dialog button { position:static; margin:8px 2px 0 0; border-radius:6px; }
+dialog.reference-dialog::backdrop { background:rgb(4 8 7 / .85); }
+@media (max-width:760px) {
+ #v-plist .plist-header { margin-bottom:14px; padding-bottom:12px; }
+ #v-plist .space-card-footer { padding-block:10px; }
+ #v-p #vp-remake-overview .vp-flow-banner-head { padding:16px; min-height:90px; }
+ #v-p #vp-remake-overview .vp-flow-stage--vert { margin:10px; }
+ dialog.reference-dialog { width:96vw; padding:5px; }
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+ #v-plist .space-card { transition:transform 260ms var(--studio-ease),border-color 210ms ease,box-shadow 260ms ease; }
+ #v-plist .space-card:hover { transform:translateY(-4px); border-color:#7bba9985; box-shadow:0 14px 30px #0007; }
+ #v-plist .space-card-cover-img { transition:transform 450ms var(--studio-ease); }
+ #v-plist .space-card:hover .space-card-cover-img { transform:scale(1.035); }
+}
+@keyframes studio-appear { from{opacity:.48;transform:translateY(9px)} to{opacity:1;transform:none} }
+@keyframes studio-stage-enter { from{opacity:.5;transform:translateX(12px)} to{opacity:1;transform:none} }
+@keyframes studio-reference-shade { from{background-color:rgb(4 8 7 / 0)} to{background-color:rgb(4 8 7 / .85)} }
+@media (prefers-reduced-motion:no-preference) {
+ #v-plist.on .space-card { animation:studio-appear 300ms var(--studio-ease) backwards; }
+ #v-plist.on .space-card:nth-child(2){animation-delay:25ms}
+ #v-plist.on .space-card:nth-child(3){animation-delay:42ms}
+ #v-plist.on .space-card:nth-child(4){animation-delay:56ms}
+ #v-plist.on .space-card:nth-child(5){animation-delay:68ms}
+ #v-p.on .vp-remake-view.active .vp-flow-banner-head,#v-p.on .vp-remake-view.active .vp-subpanel-bar { animation:studio-appear 290ms var(--studio-ease); }
+ #v-p.on .vp-remake-view.active .vp-flow-stage { animation:studio-appear 290ms var(--studio-ease) 35ms backwards; }
+ #v-a.on .ast-tab:not([style*="display: none"]) .char-group:nth-child(-n+6) { animation:studio-stage-enter 220ms var(--studio-ease); }
+ #v-adapt.on .adapt-head,#v-adapt.on .adapt-sb-overview,#v-g.on #vg-episode-board { animation:studio-stage-enter 240ms var(--studio-ease); }
+ #v-g.on .vg-shot-enter { animation:studio-stage-enter 190ms var(--studio-ease); }
+ dialog.reference-dialog[open]::backdrop { animation:studio-reference-shade 220ms ease-out; }
+ dialog.reference-dialog[data-closing]::backdrop { background-color:transparent; transition:background-color 140ms ease-in; animation:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .vw,.vw *,.vw *::before,.vw *::after,.reference-dialog,.reference-dialog::backdrop { animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important; }
+}
+
+/* Preserve all four steps in the desktop header, including while a project is open. */
+@media (min-width:1100px) {
+ body:not(.on-plist) .topnav { gap:clamp(8px,1vw,16px); }
+ .topnav .topnav-steps { flex-wrap:nowrap; min-width:0; gap:clamp(2px,.35vw,6px); }
+ .topnav .topnav-steps .step { padding-inline:clamp(3px,.5vw,8px); gap:4px; flex:none; white-space:nowrap; }
+ .topnav .topnav-steps .sa { flex:0 1 12px; width:12px; min-width:4px; }
+ .topnav .topnav-project-name { display:inline-block; max-width:clamp(80px,11vw,178px); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:bottom; }
+ #v-p #vp-remake-overview .vp-flow-stages--vert { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:16px; }
+ #v-p #vp-remake-overview .vp-flow-stage--vert { margin:0; min-width:0; align-items:flex-start; padding:20px; }
+ #v-p #vp-remake-overview .vp-flow-stage-no { flex:none; }
+ #v-p #vp-remake-overview .vp-flow-banner-head { min-height:135px; }
+}
+@media (max-width:760px) {
+ #v-p #vp-remake-overview .vp-flow-banner-head::before { inset-inline-start:12%; background-image:linear-gradient(90deg,#18211e,#18211ed9 52%,#18211ebf),var(--project-cover,none); }
+}
