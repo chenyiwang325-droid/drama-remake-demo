@@ -2401,7 +2401,49 @@ class ShotsProgressPoller {
     }
   }
 
+  // The local prototype keeps its single URL. Restore the user's actual path
+  // through the existing panels without creating a second set of page routes.
+  const demoReturnTrail = [];
+  let restoringDemoView = false;
+  let projectOrigin = null;
+
+  function returnToPreviousDemoView() {
+    if (!window.__LOCAL_DEMO__ || !demoReturnTrail.length) return false;
+    const previous = demoReturnTrail.pop();
+    restoringDemoView = true;
+    try {
+      sw(previous.view);
+      if(previous.studio)window.toggleVGView?.('studio',previous.studio.episode,previous.studio.shot);
+    }
+    finally { restoringDemoView = false; }
+    if (previous.view !== 'plist') {
+      window.scrollTo({top:previous.scroll,behavior:'instant'});
+      const target = previous.focus?.isConnected && previous.focus.getClientRects().length
+        ? previous.focus : document.querySelector('.topnav .step[data-view="' + previous.view + '"]');
+      if(!previous.studio)target?.focus({preventScroll:true});
+    }
+    return true;
+  }
+  window.returnToPreviousDemoView = returnToPreviousDemoView;
+
   function sw(which, el) {
+    const previous = document.querySelector('.vw.on');
+    const targetView = document.getElementById('v-' + which);
+    if (!targetView) return;
+    if (window.__LOCAL_DEMO__ && previous && previous !== targetView && !restoringDemoView) {
+      if (which === 'plist') demoReturnTrail.length = 0;
+      else {
+        const priorView = previous.id.slice(2);
+        const active = document.activeElement;
+        const focus = active?.closest('.topnav') ? document.querySelector('.topnav .step[data-view="' + priorView + '"]') : active;
+        const studio=previous.matches('#v-g.vg-studio-on') ? {
+          episode:Number(previous.dataset.studioEp)||1,
+          shot:Number(previous.querySelector('.sb-shot-section.vg-active')?.dataset.sid)||1
+        } : null;
+        demoReturnTrail.push({view:priorView,focus,scroll:window.scrollY,studio});
+        if (demoReturnTrail.length > 64) demoReturnTrail.shift();
+      }
+    }
     // 安全兜底：确保任何残留的 overflow:hidden 被清除（lightbox/弹窗异常关闭、视频工作室锁死时可能残留）
     // 工作室态会同时锁 body 与 html（documentElement）；切走时两者都要恢复，否则其他页面无法滚动
     if (document.body.style.overflow === "hidden") document.body.style.overflow = "";
@@ -2413,7 +2455,19 @@ class ShotsProgressPoller {
     if (which === "plist") document.body.classList.add("on-plist");
     else document.body.classList.remove("on-plist");
     document.querySelectorAll(".topnav .step").forEach((s) => s.classList.remove("on"));
-    if (el) el.classList.add("on");
+    const step = el || document.querySelector('.topnav .step[data-view="' + which + '"]');
+    if (step) step.classList.add('on');
+    document.querySelectorAll('.topnav .step').forEach(node=>{
+      if (node === step) node.setAttribute('aria-current','step');
+      else node.removeAttribute('aria-current');
+    });
+    if (which === 'plist' && projectOrigin) {
+      const card = document.querySelector('.space-card-cover[data-project-id="' + CSS.escape(projectOrigin.id) + '"]');
+      window.scrollTo({top:projectOrigin.scroll,behavior:'instant'});card?.focus({preventScroll:true});
+    } else if (window.__LOCAL_DEMO__ && previous !== targetView && !restoringDemoView) {
+      window.scrollTo({top:0,behavior:'instant'});
+      step?.focus({preventScroll:true});
+    }
   updateTopnavStepStates(which);
   markTopnavHintSeen();
   renderSyncedNoticeIfAny(which);
@@ -2423,7 +2477,9 @@ class ShotsProgressPoller {
     window.SB_VIEW_LIVE = (which === 'g') ? 'video' : which;
     if (which === 'g') {
       if (typeof refreshEpisodeStatusBadges === "function") refreshEpisodeStatusBadges();
-      var _vgEl = document.getElementById('v-g'); if (_vgEl) _vgEl.classList.remove('vg-studio-on');
+      const vg = document.getElementById('v-g');
+      if (vg?.classList.contains('vg-studio-on') && typeof window.toggleVGView==='function') window.toggleVGView('board');
+
     }
 
     // 更新 URL 参数，保持当前页面状态
@@ -11566,6 +11622,7 @@ if (document.readyState === 'loading') {
 
 
 function openProject(pid) {
+  if(document.getElementById('v-plist')?.classList.contains('on'))projectOrigin={id:String(pid),scroll:window.scrollY};
   var p = PROJECT_LIST.find(function (x) { return x.id === pid; });
   if (p && window.PAGE_DATA) window.PAGE_DATA.pid = pid;
   const workspace = document.getElementById('v-p');
@@ -11639,7 +11696,7 @@ function renderProjectList() {
     return '<article class="space-card" data-item-id="' + p.id + '">' +
       '<button class="space-card-action space-card-select" type="button" title="选择"><svg class="svg-icon"><use xlink:href="#icon-space-select-normal"/></svg></button>' +
       '<button class="space-card-action space-card-favorite" type="button" title="收藏"><svg class="svg-icon"><use xlink:href="#icon-space-collect-normal"/></svg></button>' +
-      '<button type="button" aria-label="进入' + escapeProjectText(p.name) + '" class="space-card-cover" onclick="openProject(\'' + p.id + '\')" >' +
+      '<button type="button" aria-label="进入' + escapeProjectText(p.name) + '" class="space-card-cover" data-project-id="' + escapeProjectText(p.id) + '" onclick="openProject(\'' + p.id + '\')" >' +
         (p.cover ? '<img class="space-card-cover-img" src="' + p.cover + '" alt="" loading="lazy">' : '<div class="space-card-cover-bg" style="background:linear-gradient(135deg,' + p.color + '33,#1a1a1a)"></div>') +
         doneBadge +
       '</button>' +

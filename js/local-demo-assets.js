@@ -1726,10 +1726,10 @@
       }
       var prog = (total > 0) ? (done + '/' + total) : '';
       html += '<div class="sb-ep-item-row">' +
-        '<a class="sb-ep-item' + (currentEp && e.ep === currentEp ? ' on' : '') + '" data-ep="' + e.ep + '" onclick="event.stopPropagation();' + onclickExpr + '(' + e.ep + ');return false;">' +
+        '<button type="button" class="sb-ep-item' + (currentEp && e.ep === currentEp ? ' on' : '') + '" data-ep="' + e.ep + '" onclick="event.stopPropagation();' + onclickExpr + '(' + e.ep + ');return false;">' +
           '<span class="sb-ep-mainline"><span class="sb-ep-title">E' + pad + '</span>' + (cnt ? '<span class="sb-ep-count">' + cnt + '</span>' : '') + '</span>' +
           '<span class="sb-ep-subline">' + (prog ? '<span class="sb-ep-progress-text">' + prog + '</span>' : '') + spinnerHTML + '<span class="sb-ep-status-badge ' + statusCls + '">' + statusText + '</span></span>' +
-        '</a>' +
+        '</button>' +
       '</div>';
     });
     return html + '</div>';
@@ -1742,6 +1742,7 @@
 
   // studio 内切集（看板下拉点卡片）
   function switchVGEpisode(ep) {
+    const vg=document.getElementById('v-g');if(vg)vg.dataset.studioEp=String(ep);
     if (typeof _demoSwitchEpisode === 'function') _demoSwitchEpisode(ep);
     toggleVGEpPicker(true);
     _updateVGEpPickerLabel(ep);
@@ -1791,9 +1792,20 @@
       if (s.id === 'sb-shot-' + sid) { s.classList.add('vg-active'); target = s; }
       else s.classList.remove('vg-active');
     });
+    const rail=vg.querySelector('.sb-shot-list');
+    const hadFocus=rail?.contains(document.activeElement);
     vg.querySelectorAll('.sb-shot-item').forEach(function(it) {
-      if (String(it.getAttribute('data-sid')) === String(sid)) it.classList.add('on');
-      else it.classList.remove('on');
+      const selected=String(it.dataset.sid)===String(sid);
+      it.classList.toggle('on',selected);
+      if(!it.closest('.sb-shot-list'))return;
+      it.tabIndex=selected?0:-1;
+      if(selected)it.setAttribute('aria-current','true');else it.removeAttribute('aria-current');
+      if(selected&&hadFocus){
+        it.focus({preventScroll:true});
+        const item=it.getBoundingClientRect(),box=rail.getBoundingClientRect();
+        if(rail.scrollWidth>rail.clientWidth)rail.scrollLeft+=item.left<box.left?item.left-box.left:Math.max(0,item.right-box.right);
+        if(rail.scrollHeight>rail.clientHeight)rail.scrollTop+=item.top<box.top?item.top-box.top:Math.max(0,item.bottom-box.bottom);
+      }
     });
     // 切换动效（淡入 + 轻微上滑）
     if (target) {
@@ -1838,8 +1850,8 @@
   }
   function _vgOnKey(e) {
     var vg = document.getElementById('v-g');
-    if (!vg || !vg.classList.contains('vg-studio-on')) return;
-    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;   // 输入框不拦截
+    if (!vg || !vg.classList.contains('on') || !vg.classList.contains('vg-studio-on')) return;
+    if (document.querySelector('dialog[open], .dialog-backdrop.on') || e.target.closest('textarea,input,select,[contenteditable="true"],[role="dialog"]')) return;   // 输入框不拦截
     var delta = 0;
     if (e.key === 'ArrowDown' || e.key === 'PageDown') delta = 1;
     else if (e.key === 'ArrowUp' || e.key === 'PageUp') delta = -1;
@@ -2377,11 +2389,17 @@
   window.selectVideoParam = selectVideoParam;
   window.toggleVGVideoParams = function(e, sec){ var el=document.querySelector('#v-g .vg-video-params'); if(el) toggleVideoParams(e, el); };
   // 等当前集分镜渲染就绪后聚焦第一个（_demoSwitchEpisode 异步渲染 section）
-  function _focusFirstShotWhenReady() {
+  function _focusFirstShotWhenReady(preferredSid = 1) {
     var vg = document.getElementById('v-g');
     var allShots = vg && vg.querySelector('.sb-all-shots');
     if (!allShots) return;
-    var ready = function() { _vgReshapeAll(); switchShot(1); };
+    const episode = vg.dataset.studioEp;
+    const ready = function() {
+      if(!vg.classList.contains('on')||!vg.classList.contains('vg-studio-on')||vg.dataset.studioEp!==episode)return;
+      _vgReshapeAll();switchShot(vg.querySelector('#sb-shot-' + Number(preferredSid)) ? Number(preferredSid) : 1);
+      const current = vg.querySelector('.sb-shot-list .sb-shot-item.on');
+      current?.focus({preventScroll:true});
+    };
     if (allShots.querySelector('.sb-shot-section')) { ready(); return; }
     var obs = new MutationObserver(function() {
       if (allShots.querySelector('.sb-shot-section')) { obs.disconnect(); ready(); }
@@ -2730,21 +2748,30 @@
   window._toggleVgSaveMenu = _toggleVgSaveMenu;
   window._closeVgSaveMenu = _closeVgSaveMenu;
   window._doVgSave = _doVgSave;
-  function toggleVGView(state, ep) {
+  function toggleVGView(state, ep, shot) {
     var vg = document.getElementById('v-g');
     if (!vg) return;
     if (state === 'studio') {
+      vg.dataset.studioEp=String(ep || window.PAGE_DATA?.sbEp || 1);
+      if (!vg.classList.contains('vg-studio-on')) vg.dataset.boardScroll=String(window.scrollY);
       vg.classList.add('vg-studio-on');
+      window.scrollTo({top:0,behavior:'instant'});
       document.body.style.overflow = 'hidden';   // studio 锁死 body 滚动
       document.documentElement.style.overflow = 'hidden';   // 锁死 html 滚动（消除下方空白/上下滑动）
       if (ep && typeof _demoSwitchEpisode === 'function') _demoSwitchEpisode(ep);
       _initVGStudio();
       _updateVGEpPickerLabel(ep || (typeof PAGE_DATA !== 'undefined' && PAGE_DATA.sbEp) || 1);
-      _focusFirstShotWhenReady();
+      _focusFirstShotWhenReady(shot);
     } else {
       vg.classList.remove('vg-studio-on');
       document.body.style.overflow = '';   // 恢复
       document.documentElement.style.overflow = '';
+      if (vg.classList.contains('on')) {
+        renderVGEpisodeBoard();
+        const origin=vg.querySelector('#vg-episode-board [data-ep="' + CSS.escape(vg.dataset.studioEp||'1') + '"]');
+        window.scrollTo({top:Number(vg.dataset.boardScroll)||0,behavior:'instant'});
+        origin?.focus({preventScroll:true});
+      }
     }
   }
   window.renderVGEpisodeBoard = renderVGEpisodeBoard;

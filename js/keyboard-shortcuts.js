@@ -13,7 +13,18 @@
     'Alt+2': () => switchView('a'),
     'Alt+3': () => switchView('adapt'),
     'Alt+4': () => switchView('g'),
-    'Escape': () => closeModals(),
+    'Escape': () => {
+      const picker=document.getElementById('vg-ep-picker-modal');
+      if(picker?.style.display==='flex'){
+        window.toggleVGEpPicker?.(true);document.getElementById('vg-ep-picker')?.focus({preventScroll:true});return;
+      }
+      const layer=document.activeElement?.closest('[role="dialog"],dialog,.dialog-backdrop,.shortcuts-help-modal');
+      const openPopup=[...document.querySelectorAll('[data-open="1"],[aria-modal="true"],dialog[open],.shortcuts-help-modal,.dialog-backdrop.on,.project-error-panel.on')].some(n=>n.getClientRects().length);
+      if(layer||openPopup){closeModals();return;}
+      const vg=document.getElementById('v-g');
+      if(vg?.matches('.on.vg-studio-on')){window.toggleVGView?.('board');return;}
+      window.returnToPreviousDemoView?.();
+    },
     '?': () => showShortcutsHelp(),
   };
 
@@ -27,6 +38,7 @@
   // 关闭所有弹窗：调用各弹窗的标准关闭函数（与 ✕ 按钮一致）
   // 绝不设置 display:none（会覆盖 .on 的 display:flex，导致无法重开）
   function closeModals() {
+    let closed = false;
     const closeFns = {
       'sb-modal-preview': 'closeSbPreviewModal',
       'sb-modal-dl': 'closeSbDownloadModal',
@@ -46,6 +58,7 @@
     Object.keys(closeFns).forEach(id => {
       const el = document.getElementById(id);
       if (el && el.classList.contains('on')) {
+        closed = true;
         const fn = window[closeFns[id]];
         if (typeof fn === 'function') { try { fn(); } catch (e) {} }
         else { el.classList.remove('on'); el.setAttribute('aria-hidden', 'true'); }
@@ -53,10 +66,12 @@
     });
     // 兜底：清理任何未注册的残留遮罩（只移除 .on，不动 display）
     document.querySelectorAll('.dialog-backdrop.on').forEach(el => {
+      closed = true;
       el.classList.remove('on');
       el.setAttribute('aria-hidden', 'true');
     });
-    // 恢复页面滚动
+    // A bare Escape in a field must not unlock the studio's own scroll layout.
+    if (!closed) return;
     if (typeof window.ensureScrollUnlocked === 'function') window.ensureScrollUnlocked();
     else document.body.style.overflow = '';
   }
@@ -119,6 +134,7 @@
 
   // 监听键盘事件
   document.addEventListener('keydown', (e) => {
+    if(e.defaultPrevented||e.isComposing||e.key==='Escape'&&e.repeat)return;
     // 忽略在输入框中的按键
     if (e.target.tagName === 'INPUT' ||
         e.target.tagName === 'TEXTAREA' ||
